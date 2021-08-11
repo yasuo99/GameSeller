@@ -1,0 +1,135 @@
+﻿@model DichVuGame.Models.ViewModels.GamesViewModel
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<body>
+
+    <section class="features-6">
+        <div class="features6-block ">
+            <div class="container py-lg-5">
+                <div class="row title-content">
+                    <div class="col-lg-4 title-left">
+                        <h3 class="hny-title">"Chơi Wii nhé?"</h3>
+                    </div>
+                    <div class="col-lg-8 title-info">
+                        <p>
+                            Sau rất nhiều nỗ lực quảng cáo cho đứa con cưng Wii của mình, Nintendo đã
+                            tung ra khẩu hiệu “Wii Would Like To Play” - một cách chơi chữ hết sức độc
+                            đáo và thú vị. Câu khẩu hiệu đã nói lên tất cả: Nintendo Wii là một tựa game
+                            dành cho tất cả mọi lứa tuổi và ai cũng muốn chơi nó.
+                        </p>
+                    </div>
+                </div>
+                <div class="features6-grids text-center mt-5">
+                    <img src="\menu_lt\images\bg3.jpg" class="img-fluid" alt="">
+
+                    <div class="three-grids d-grid grid-columns-3">
+                        <div class="grid">
+                            <div class="icon">
+                                <span style="color:black" class="fa fa-id-card-o" aria-hidden="true"></span>
+                            </div>
+                            <div class="icon-info">
+                                <h4><a href="#">An toàn</a></h4>
+                                <p>
+                                    Bảo mật thông tin tài khoản của bạn và bảo đảm trong
+                                    từng giao dịch của bạn.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="icon">
+                                <span style="color:black" class="fa fa-cc-paypal" aria-hidden="true"></span>
+                            </div>
+                            <div>
+                                <h4><a href="#">Nhanh chóng</a></h4>
+                                <p>
+                                    Sử dụng Paypal để thực hiện giao dịch
+                                    nhanh chóng và chính xác.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="icon">
+                                <span style="color:black" class="fa fa-pencil-square" aria-hidden="true"></span>
+                            </div>
+                            <div class="icon-info">
+                                <h4>
+                                    <a href="#">
+                                        Cập nhật
+                                    </a>
+                                </h4>
+                                <p>Luôn cập nhật liên tục nhưng game mới nóng hổi trong thị trường game</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- features-4 -->
+    <div style="text-align: center">
+        <label style="font-family:Bahnschrift;font-size:40px;color:black">Sản phẩm</label>
+    </div>
+    <section class="w3l-services-2" id="mainproduct">
+        <div class="services-2-mian ">
+            <div class="container ">
+                <div class="grid">
+                    <form asp-action="Index" method="get">
+                        <select name="country" onchange="this.form.submit()">
+                            <option>Quốc gia</option>
+                            @foreach (var item in Model.Countries)
+                            {
+                                <option value="@item.ID">@item.Countryname</option>
+                            }
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /content-6-section -->
+        <div class="services-2-mian ">
+            <div class="container ">
+                <div class="welcome-grids row">
+                    @foreach (var game in Model.Games)
+                    {
+
+                        <div class="col-lg-4 col-md-6 course-grid">
+                            <div class="course-grid-inf">
+                                <a asp-area="Customer" asp-controller="Home" asp-action="Details" asp-route-id="@game.ID">
+                                    <img src="@game.GamePoster" class="img-fuild" style="height:389.89px" alt="">
+                                </a>
+                                <div class="course-content">
+                                    <a asp-area="Customer" asp-controller="Home" asp-action="Details" asp-route-id="@game.ID">
+                                        <div class="course-info">
+                                            <h6> @game.Studio.Studioname</h6>
+                                            <h3 class="course-title">@game.Gamename</h3>
+                                        </div>
+                                    </a>
+                                    <div class="course-divider">
+                                        <div class="course-meta grid">
+                                            <span class="course-students" title="">
+                                                <span class="fa fa-user" aria-hidden="true"></span> 46
+                                            </span>
+                                            <span class="course-reviews" title="">
+                                                <span class="fa fa-thumbs-o-up"
+                                                      aria-hidden="true"></span> 14
+                                            </span>
+
+                                        </div>
+                                        <a class="price-course btn btn-outline-secondary" asp-area="Customer" asp-controller="Home" asp-action="Details" asp-route-id="@game.ID"> @game.Price </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+        <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+             page-class="btn border" page-class-normal="btn btn-default active"
+             page-class-selected="btn btn-primary active" class="btn-group m-1"></div>
+    </section>
+</body>

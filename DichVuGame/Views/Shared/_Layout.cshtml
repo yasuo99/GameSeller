@@ -1,0 +1,349 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http
+@using DichVuGame.Extensions
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject IHttpContextAccessor HttpContextAccessor
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DichVuGame</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="\menu_lt\css\style-starter.css">
+    <!-- Template CSS -->
+    <link href="//fonts.googleapis.com/css?family=Muli:300,300i,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,500,700,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!--/top-header-content-->
+    <section class="w3l-top-header-content">
+        <div class="hny-top-menu">
+            <div class="top-hd">
+                <div class="container-fluid">
+                    <div class="row">
+                        <ul class="social-top col-md-7">
+
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <li class="log-link mr-3"><a class="sign-in" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"> Đăng xuất</a></li>
+                                <li class="top_li mr-lg-0">
+                                    <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@await Component.InvokeAsync("Username")</a>
+                                </li>
+                                <li class="top_li mr-lg-0">
+                                    <a class="nav-link text-white fa fa-history" asp-area="Customer" asp-controller="TopupHistories" asp-action="Index">Lịch sử</a>
+                                </li>
+                                <li class="top_li mr-lg-0">
+                                    <a class="nav-link text-white fa fa-comments" asp-area="Customer" asp-controller="GameReviews" asp-action="Index">Nhận xét</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="log-link mr-3"><a class="sign-in" asp-area="Identity" asp-page="/Account/Login"><span class="fa fa-user"></span> Đăng nhập</a></li>
+                            }
+
+                            @*<li><a href="facebook.com"><span class="fa fa-facebook"></span></a></li>
+                                <li><a href="instagram.com"><span class="fa fa-instagram"></span></a> </li>*@
+
+                            @*<li>
+                                    <a href="#">
+                                        <span class="fa fa-linkedin"></span>
+                                    </a>
+                                </li>*@
+                        </ul>
+                        <ul class="accounts col-md-5">
+
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+
+
+
+                                <li class="top_li">
+                                    <a>
+                                        @await Component.InvokeAsync("Balance")
+                                    </a>
+
+
+                                </li>
+                                <li class="top_li">
+
+                                    <a asp-area="Customer" asp-controller="Paypal" asp-action="Index" class="fa fa-btc">
+
+                                        Nạp Bcoin
+                                    </a>
+
+                                </li>
+
+                                <li class="top_li">
+                                    <a class="nav-link text-white fa fa-history" asp-area="Customer" asp-controller="Orders" asp-action="Index">Đơn hàng</a>
+                                </li>
+
+
+
+                            }
+                            @{
+                                int count = 0;
+                                var shoppingCart = HttpContextAccessor.HttpContext.Session.Get<List<DichVuGame.Models.ViewModels.CartViewModel>>("ShoppingCartSession");
+                                if (shoppingCart != null)
+                                {
+                                    count = HttpContextAccessor.HttpContext.Session.Get<List<DichVuGame.Models.ViewModels.CartViewModel>>("ShoppingCartSession").Count;
+                                    <li><a asp-area="Customer" asp-controller="Cart" asp-action="Index"><span class="fas fa-shopping-cart" style="margin-right:1px;"></span> Giỏ hàng(@count)</a></li>
+                                }
+
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!--//top-header-content-->
+
+    <section class="w3l-banner-slider-main">
+
+        <div class="bannerhny-content">
+
+
+            <!--/banner-slider-->
+            <section class="w3l-banner-slider-main w3l-inner-page-main">
+                <div class="breadcrumb-infhny">
+                    <header class="top-headerhny">
+                        <!--/nav-->
+                        <nav class="navbar navbar-expand-lg navbar-light fill">
+                            <div class="container-fluid">
+                                <a class="navbar-brand" asp-area="Customer" asp-controller="Home" asp-action="Index">
+                                    <label class="lohny"><span class="fa fa-gamepad" aria-hidden="true"></span>HCMUTE</label>GAME
+                                </a>
+                                <!-- if logo is image enable this
+                                <a class="navbar-brand" href="#index.html">
+                                  <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+                                </a> -->
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                        aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav mx-lg-auto ml-auto">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-area="Customer" asp-controller="Spinwheel" asp-action="Index">Vòng xoay may mắn</a>
+                                        </li>
+
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Contact">Liên lạc</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-area="Customer" asp-controller="About">Giới Thiệu</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @id = "searchform", @class = "d-flex searchhny-form" }))
+                                {
+                                    @Html.Editor("q", new { htmlAttributes = new { @id = "searchtextbox", @class = "form-control", autocomplete = "off", placeholder = "Từ khóa", style = "border-radius=10px;font-size:14px;", required = "required" } })
+                                    <button type="submit"><span class="fa fa-search" aria-hidden="true"></span></button>
+                                }
+                            </div>
+                        </nav>
+                        <!--//nav-->
+                    </header>
+                    <!-- /breadcrumbs-->
+                    <div class="container">
+                        <nav aria-label="breadcrumb" class="breadcrumb-info">
+                            <h2 class="hny-title text-center">Những tựa Game đình đám nhất</h2>
+                            <ol class="breadcrumb mb-0">
+
+
+                                <li class="button-4 mx-auto" style="margin-bottom:4px">
+                                    <div class="eff-4"></div>
+                                    <a href="#mainproduct"> Trải nghiệm ngay</a>
+                                </li>
+
+                            </ol>
+                        </nav>
+                    </div>
+                    <!-- //breadcrumbs-->
+                </div>
+                <!--//banner-slider-->
+            </section>
+        </div>
+        <!--//banner-slider-->
+
+    </section>
+
+    <div class="container" id="maincontent">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*<footer class="border-top para-content-footer text-muted">
+            <div class="container">
+                &copy; 2020 - DichVuGame - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+    <section class="w3l-footer-16">
+        <div class="w3l-footer-16-main py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 column">
+                        <div class="row">
+                            <div class="col-md-8 column">
+
+                                <a class="logo-2" href="\menu_lt\index.html">
+                                    <label class="lohny"><span class="fa fa-gamepad" aria-hidden="true"></span>HCMUTE</label>GAME
+                                </a>
+
+                                <div class="ad-text-inf">
+                                    <p><span class="color-hny">Address :</span> Số 1, Võ Văn Ngân, phường Linh Chiểu, quận Thủ Đức</p>
+                                </div>
+                                <div class="ad-text-inf">
+                                    <p><span class="color-hny">Email :</span> <a href="https://www.facebook.com/kai.trung.5">fb: Thương mại điện tử</a></p>
+                                </div>
+                                <div class="ad-text-inf">
+                                    <p>
+                                        <span class="color-hny">Phone :</span> <a href="#">
+                                            +142
+                                            5897555
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 column column3 mt-lg-0 mt-4">
+                        <h3>Articles</h3>
+                        <ul class="list-unstyled d-flex flex-wrap">
+                            <li class="">
+                                <div class="row">
+                                    <a class="col-md-5 col-4" href="#">
+                                        <img class="rounded img-fluid img-responsive" src="\menu_lt\images\logoclc.png"
+                                             alt="image">
+                                    </a>
+                                    <div class="col pl-0">
+                                        <a class="footer-small-text" href="#">Khoa đào tạo chất lượng cao</a>
+                                        <div class="text-sub-small">Feb 20th</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="mt-md-0 mt-2">
+                                <div class="row my-2 my-md-3">
+                                    <a class="col-md-5 col-4" href="#">
+                                        <img class="rounded img-fluid img-responsive" src="\menu_lt\images\spkt.jpg"
+                                             alt="image">
+                                    </a>
+                                    <div class="col pl-0">
+                                        <a class="footer-small-text" href="#">Trường Đại học Sư phạm Kỹ thuật TPHCM</a>
+                                        <div class="text-sub-small">Feb 22nd</div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6 column column4 mt-lg-0 mt-4">
+                        <h3>Newsletter </h3>
+                        <div class="end-column">
+                            <h4>Subscribe Here Now</h4>
+                            <form action="#" class="subscribe" method="post">
+                                <input type="email" name="email" placeholder="Địa chỉ Email" required="">
+                                <button><span class="fa fa-paper-plane" aria-hidden="true"></span></button>
+                            </form>
+                            <p>Gửi bình luận đến chúng tôi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex below-section justify-content-between align-items-center pt-4 mt-5">
+                    <div class="columns text-lg-left text-center">
+                        <p>
+                            © 2020 Hcmute. All rights reserved. Thiết kế bởi <a href="#" target="_blank">
+                                THOXAODIEN
+                            </a>
+                        </p>
+                    </div>
+                    <div class="columns-2 mt-md-0 mt-3">
+                        <ul class="social">
+                            <li>
+                                <a href="#facebook"><span class="fa fa-facebook" aria-hidden="true"></span></a>
+                            </li>
+                            <li>
+                                <a href="#linkedin"><span class="fa fa-linkedin" aria-hidden="true"></span></a>
+                            </li>
+                            <li>
+                                <a href="#twitter"><span class="fa fa-twitter" aria-hidden="true"></span></a>
+                            </li>
+                            <li>
+                                <a href="#google"><span class="fa fa-google-plus" aria-hidden="true"></span></a>
+                            </li>
+                            <li>
+                                <a href="#github"><span class="fa fa-github" aria-hidden="true"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            <span class="fa fa-angle-up"></span>
+        </button>
+        <script>
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function () {
+                scrollFunction()
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("movetop").style.display = "block";
+                } else {
+                    document.getElementById("movetop").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+        <!-- //move top -->
+
+    </section>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/spinwheel/spin.js"></script>
+    <script src="https://kit.fontawesome.com/70d04a055c.js" crossorigin="anonymous"></script>
+    @RenderSection("Scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $('input.chk').on('change', function () {
+                $('input.chk').not(this).prop('checked', false);
+            });
+        })
+    </script>
+    <script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+    </script>
+    @section Scripts{
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</body>
+</html>

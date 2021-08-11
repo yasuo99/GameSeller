@@ -1,0 +1,127 @@
+﻿@model DichVuGame.Models.ViewModels.SuperCartViewModel
+@{
+    ViewData["Title"] = "Giỏ hàng";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="\cart_page\StyleSheet.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+<body>
+    <form asp-area="Customer" asp-controller="Cart" asp-action="Checkout" method="post">
+        @if (Model.CartVM1.Count > 0)
+        {
+            <script src="https://use.fontawesome.com/c560c025cf.js"></script>
+            <h1 style="text-align:center;color:grey;margin-top:40px;font-family:Bahnschrift;font-size:30px">GIỎ HÀNG CỦA BẠN</h1>
+            var subtotal = 0.0;
+            @if (Model.CartVM1.Count > 0)
+            {
+
+                <div class="container">
+                    <div class="card shopping-cart">
+                        <div class="card-header bg-dark text-light">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            Giỏ hàng
+                            <a asp-action="Index" asp-controller="Home" class="btn btn-outline-info btn-sm pull-right">Quay lại mua hàng</a>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="card-body">
+                            @foreach (var product in Model.CartVM1)
+                            {
+                                <!-- PRODUCT -->
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-2 text-center">
+                                        <img class="img-responsive" src="@product.Game.GamePoster" alt="prewiew" width="150" height="150">
+                                    </div>
+                                    <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                                        <h4 class="product-name"><strong>@product.Game.Gamename</strong></h4>
+                                        <h4>
+                                           <a asp-area="Customer" asp-controller="Home" asp-action="Index" asp-route-q="@product.Studio.Studioname"><small> @product.Studio.Studioname</small></a>
+                                        </h4>
+                                    </div>
+                                    <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                                        <div class="col-4 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+                                            <h6><strong>@product.Game.Price </strong></h6>
+                                        </div>
+                                        <div class="col-4 col-sm-4 col-md-4" style="padding-top: 5px">
+                                            <span class="text-muted">x @product.Amount</span>
+                                        </div>
+                                        @{ var total = product.Game.Price * product.Amount;
+                                            subtotal += total;}
+                                        <div class="col-2 col-sm-2 col-md-2 text-right">
+                                            @*<button type="button" class="btn btn-outline-danger btn-xs">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </button>*@
+                                            <a asp-area="Customer" asp-controller="Cart" asp-action="RemoveFromCartInCart" asp-route-id="@product.Game.ID" asp-route-type="Code" class="btn btn-danger">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <!-- END PRODUCT -->
+
+
+                            }
+                            <div class="pull-right">
+                                <a href="" class="btn btn-outline-secondary pull-right">
+                                    Cập nhật giỏ hàng
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input name="Discount" placeholder="Mã giảm giá" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="pull-right" style="margin: 10px">
+                                <div class="pull-right">
+
+                                    <button type="submit" class="btn btn-success">
+                                        Thanh toán<span class="glyphicon glyphicon-play"></span>
+                                    </button>
+                                </div>
+
+                                <div class="pull-right" style="margin: 5px;margin-right:10px">
+                                    Tạm tính: <b>@subtotal</b>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            }
+
+        }
+        else
+        {
+            <div class="container border border-light" style="height: 400px;background-color:white">
+                <br />
+                <br />
+                <br />
+                <img class="col-sm-5 offset-sm-4" src="https://divineshop.vn/assets/image/empty-cart.png" />
+                <div class="col-sm-5 offset-sm-5">Oop! Giỏ hàng của bạn đang trống</div>
+                <div class="col-sm-6 offset-sm-5">
+                    <a asp-action="Index" asp-controller="Home" class="nav-link btn" style="background-color:#fdd835;border-radius:5px;text-align:center;width: 225px">Mua ngay</a>
+                </div>
+            </div>
+        }
+    </form>
+
+</body>
+</html>

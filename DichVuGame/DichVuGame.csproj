@@ -1,0 +1,159 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-DichVuGame-BCD33A19-B9DE-4781-B2AE-9E6EA476719A</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\00000000000000_CreateIdentitySchema.cs" />
+    <Compile Remove="Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200504060337_init.cs" />
+    <Compile Remove="Data\Migrations\20200504060337_init.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200504063235_init.cs" />
+    <Compile Remove="Data\Migrations\20200504063235_init.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200504064333_init.cs" />
+    <Compile Remove="Data\Migrations\20200504064333_init.Designer.cs" />
+    <Compile Remove="Migrations\20200612153452_init.cs" />
+    <Compile Remove="Migrations\20200612153452_init.Designer.cs" />
+    <Compile Remove="Migrations\20200621093934_init.cs" />
+    <Compile Remove="Migrations\20200621093934_init.Designer.cs" />
+    <Compile Remove="Migrations\20200621100027_init.cs" />
+    <Compile Remove="Migrations\20200621100027_init.Designer.cs" />
+    <Compile Remove="Migrations\20200624005828_init.cs" />
+    <Compile Remove="Migrations\20200624005828_init.Designer.cs" />
+    <Compile Remove="Migrations\20200624010108_init.cs" />
+    <Compile Remove="Migrations\20200624010108_init.Designer.cs" />
+    <Compile Remove="Migrations\20200624021617_init.cs" />
+    <Compile Remove="Migrations\20200624021617_init.Designer.cs" />
+    <Compile Remove="Migrations\20200626032948_init.cs" />
+    <Compile Remove="Migrations\20200626032948_init.Designer.cs" />
+    <Compile Remove="Migrations\20200626090947_init.cs" />
+    <Compile Remove="Migrations\20200626090947_init.Designer.cs" />
+    <Compile Remove="Migrations\20200626091633_init.cs" />
+    <Compile Remove="Migrations\20200626091633_init.Designer.cs" />
+    <Compile Remove="Migrations\20200626093933_init.cs" />
+    <Compile Remove="Migrations\20200626093933_init.Designer.cs" />
+    <Compile Remove="Migrations\20200626095332_init.cs" />
+    <Compile Remove="Migrations\20200626095332_init.Designer.cs" />
+    <Compile Remove="Migrations\20200626105623_init.cs" />
+    <Compile Remove="Migrations\20200626105623_init.Designer.cs" />
+    <Compile Remove="Migrations\20200626115622_init.cs" />
+    <Compile Remove="Migrations\20200626115622_init.Designer.cs" />
+    <Compile Remove="Migrations\20200626120053_init.cs" />
+    <Compile Remove="Migrations\20200626120053_init.Designer.cs" />
+    <Compile Remove="Migrations\20200630132112_init.cs" />
+    <Compile Remove="Migrations\20200630132112_init.Designer.cs" />
+    <Compile Remove="Migrations\20200630153942_init.cs" />
+    <Compile Remove="Migrations\20200630153942_init.Designer.cs" />
+    <Compile Remove="Migrations\20200702053055_init.cs" />
+    <Compile Remove="Migrations\20200702053055_init.Designer.cs" />
+    <Compile Remove="Migrations\20200702083713_init.cs" />
+    <Compile Remove="Migrations\20200702083713_init.Designer.cs" />
+    <Compile Remove="Migrations\20200702120016_init.cs" />
+    <Compile Remove="Migrations\20200702120016_init.Designer.cs" />
+    <Compile Remove="Migrations\20200702122712_init.cs" />
+    <Compile Remove="Migrations\20200702122712_init.Designer.cs" />
+    <Compile Remove="Migrations\20200702123404_init.cs" />
+    <Compile Remove="Migrations\20200702123404_init.Designer.cs" />
+    <Compile Remove="Migrations\20200702235715_init.cs" />
+    <Compile Remove="Migrations\20200702235715_init.Designer.cs" />
+    <Compile Remove="Migrations\20200703000132_init.cs" />
+    <Compile Remove="Migrations\20200703000132_init.Designer.cs" />
+    <Compile Remove="Migrations\20200703163645_init.cs" />
+    <Compile Remove="Migrations\20200703163645_init.Designer.cs" />
+    <Compile Remove="Migrations\20200703165737_init.cs" />
+    <Compile Remove="Migrations\20200703165737_init.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="bootstrap" Version="4.4.1" />
+    <PackageReference Include="MailKit" Version="2.7.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
+    <PackageReference Include="PayPal" Version="1.9.1" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+    <Folder Include="wwwroot\videos\GameDemo\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\about\assets\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\about\assets\dropdown\js\script.min.js" />
+    <None Include="wwwroot\about\assets\formoid\formoid.min.js" />
+    <None Include="wwwroot\about\assets\parallax\jarallax.min.js" />
+    <None Include="wwwroot\about\assets\playervimeo\vimeo_player.js" />
+    <None Include="wwwroot\about\assets\popper\popper.min.js" />
+    <None Include="wwwroot\about\assets\smoothscroll\smooth-scroll.js" />
+    <None Include="wwwroot\about\assets\tether\tether.min.js" />
+    <None Include="wwwroot\about\assets\theme\js\script.js" />
+    <None Include="wwwroot\about\assets\touchswipe\jquery.touch-swipe.min.js" />
+    <None Include="wwwroot\about\assets\web\assets\jquery\jquery.min.js" />
+    <None Include="wwwroot\about\assets\web\assets\mobirise-icons\mobirise-icons.svg" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\.gitignore" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\.travis.yml" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\gulpfile.js" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\LICENSE" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\README.md" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\bootstrap\css\bootstrap.css.map" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\bootstrap\js\bootstrap.js" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\bootstrap\js\bootstrap.js.map" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\bootstrap\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\jquery\jquery.js" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\jquery\jquery.min.js" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\jquery\jquery.min.map" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\jquery\jquery.slim.js" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\jquery\jquery.slim.min.js" />
+    <None Include="wwwroot\homepage\startbootstrap-shop-homepage-gh-pages\vendor\jquery\jquery.slim.min.map" />
+    <None Include="wwwroot\login_lt\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\login_lt\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\menu_lt\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\menu_lt\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\menu_lt\js\all.js" />
+    <None Include="wwwroot\menu_lt\js\app.js" />
+    <None Include="wwwroot\menu_lt\js\bootstrap.min.js" />
+    <None Include="wwwroot\menu_lt\js\jquery-1.7.2.js" />
+    <None Include="wwwroot\menu_lt\js\jquery-3.3.1.min.js" />
+    <None Include="wwwroot\menu_lt\js\jquery.magnific-popup.min.js" />
+    <None Include="wwwroot\menu_lt\js\popper.min.js" />
+    <None Include="wwwroot\product_detail\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\product_detail\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\product_detail\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\product_detail\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\product_detail\js\bootstrap.js" />
+    <None Include="wwwroot\product_detail\js\easy-responsive-tabs.js" />
+    <None Include="wwwroot\product_detail\js\imagezoom.js" />
+    <None Include="wwwroot\product_detail\js\jquery-2.1.4.min.js" />
+    <None Include="wwwroot\product_detail\js\jquery-ui.js" />
+    <None Include="wwwroot\product_detail\js\jquery.countup.js" />
+    <None Include="wwwroot\product_detail\js\jquery.easing.min.js" />
+    <None Include="wwwroot\product_detail\js\jquery.flexslider.js" />
+    <None Include="wwwroot\product_detail\js\jquery.waypoints.min.js" />
+    <None Include="wwwroot\product_detail\js\minicart.min.js" />
+    <None Include="wwwroot\product_detail\js\modernizr.custom.js" />
+    <None Include="wwwroot\product_detail\js\move-top.js" />
+    <None Include="wwwroot\product_detail\js\responsiveslides.min.js" />
+    <None Include="wwwroot\spinwheel\spin.js" />
+  </ItemGroup>
+
+</Project>

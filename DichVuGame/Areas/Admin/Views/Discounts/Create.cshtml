@@ -1,0 +1,41 @@
+﻿@model DichVuGame.Models.Discount
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/AdminHome/_CMSLayout.cshtml";
+}
+
+<br />
+<div class="p-4 border rounded" style="background-color:#435d7d">
+    <h2 class="text-white" style="font-family:Bahnschrift;color:azure">Thêm mã giảm giá </h2>
+</div>
+<br />
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+    <div class="p-4 border rounded">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="col-2">
+            <label asp-for="Code" class="control-label"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="Code" class="form-control" />
+        </div>
+        <span asp-validation-for="Code" class="text-danger"></span>
+        <br />
+
+        <div class="col-2">
+            <label asp-for="DiscountValue" class="control-label"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="DiscountValue" class="form-control" />
+        </div>
+        <span asp-validation-for="DiscountValue" class="text-danger"></span>
+        <br />
+
+        <br />
+        <div class="form-gruop">
+            <input type="submit" class="btn btn-primary" value="Tạo phiếu " />
+            <a asp-action="Index" class="btn btn-success">Trở về </a>
+        </div>
+    </div>
+</form>

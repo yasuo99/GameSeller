@@ -1,0 +1,61 @@
+﻿@model DichVuGame.Models.ViewModels.GamesViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/AdminHome/_CMSLayout.cshtml";
+}
+
+<h1>Chi tiết</h1>
+
+<div>
+    <h4>Game</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Game.Gamename)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Game.Gamename)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Game.GamePoster)
+        </dt>
+        <dd>
+            <img src="@Model.Game.GamePoster" width="150" height="150" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Game.GameDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Game.GameDescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Game.Release)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Game.Release)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Game.Studio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Game.Studio.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Game.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Game.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Game.AvailableCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Game.AvailableCode)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-primary rounded" asp-action="Edit" asp-route-id="@Model.Game.ID">Chỉnh sửa</a> |
+    <a class="btn btn-outline-success rounded" asp-action="Index">Quay lại</a>
+</div>

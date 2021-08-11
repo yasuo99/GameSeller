@@ -1,0 +1,17 @@
+﻿using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace DichVuGame.Services
+{
+    public class AuthMessageSender : IEmailSender
+    {
+        public Task SendEmailAsync(string email, string subject, string htmlMessage)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

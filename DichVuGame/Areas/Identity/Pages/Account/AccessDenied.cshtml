@@ -1,0 +1,18 @@
+﻿@page
+@model AccessDeniedModel
+@inject SignInManager<IdentityUser> SignInManager
+@{
+    ViewData["Title"] = "Thất bại";
+    if (!User.IsInRole(DichVuGame.Utility.Helper.CUSTOMER_ROLE) || !SignInManager.IsSignedIn(User))
+    {
+        Layout = "~/Areas/Admin/Views/AdminHome/_CMSLayout.cshtml";
+    }
+
+}
+<br />
+<br />
+<br />
+<div style="text-align:center">
+    <h1 class="text-danger">@ViewData["Title"]</h1>
+    <p class="text-danger">Bạn không có quyền truy cập.</p>
+</div>

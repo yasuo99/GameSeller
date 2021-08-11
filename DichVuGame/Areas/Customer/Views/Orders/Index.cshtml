@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DichVuGame.Models.Order>
+
+@{
+    ViewData["Title"] = "Lịch sử mua hàng";
+}
+<br />
+<br />
+<h5 style="text-align: center;font-family: Bahnschrift;">Lịch sử mua hàng</h5>
+<table class="table" style="font-family: Bahnschrift;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchasedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discount.DiscountValue)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchasedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @if (item.Discount != null)
+                    {
+                    <label >@item.Discount.DiscountValue%</label> 
+                     }
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID">Chi tiết</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

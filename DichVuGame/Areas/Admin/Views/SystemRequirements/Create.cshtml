@@ -1,0 +1,98 @@
+﻿@model DichVuGame.Models.SystemRequirement
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/AdminHome/_CMSLayout.cshtml";
+}
+
+<br />
+<div class="p-4 border rounded" style="background-color:#435d7d">
+    <h2 class="text-white" style="font-family:Bahnschrift;color:azure">Thêm yêu cầu cấu hình cho  game</h2>
+</div>
+<br />
+    <form method="post" asp-action="Create" enctype="multipart/form-data">
+        <div class="p-4 border rounded">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-2">
+                <label class="control-label">Tên game</label>
+            </div>
+            <div class="col-5">
+                <select asp-for="SystemRequirementID" class="form-control" asp-items="ViewBag.SystemRequirementID"></select>
+            </div>
+
+            <br />
+
+            <div class="col-2">
+                <label asp-for="OS" class="control-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="OS" class="form-control" />
+            </div>
+            <span asp-validation-for="OS" class="text-danger"></span>
+            <br />
+
+            <div class="col-2">
+                <label asp-for="Processor" class="control-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Processor" class="form-control" />
+            </div>
+            <span asp-validation-for="Processor" class="text-danger"></span>
+            <br />
+
+            <div class="col-2">
+                <label asp-for="Ram" class="control-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Ram" class="form-control" />
+            </div>
+            <span asp-validation-for="Ram" class="text-danger"></span>
+            <br />
+
+            <div class="col-2">
+                <label asp-for="Graphic" class="control-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Graphic" class="form-control" />
+            </div>
+            <span asp-validation-for="Graphic" class="text-danger"></span>
+            <br />
+
+            <div class="col-2">
+                <label asp-for="DirectX" class="control-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="DirectX" class="form-control" />
+            </div>
+            <span asp-validation-for="DirectX" class="text-danger"></span>
+            <br />
+
+            <div class="col-2">
+                <div class="form-check-label"></div>
+            </div>
+            <div class="col-5">
+                <input class="form-check-input" style="margin-left:100px; width:20px; height:20px" asp-for="Network" /> @Html.DisplayNameFor(model => model.Network)
+            </div>
+
+            <br />
+
+
+            <div class="col-2">
+                <label asp-for="Storage" class="control-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Storage" class="form-control" />
+            </div>
+            <span asp-validation-for="Storage" class="text-danger"></span>
+            <br />
+
+
+            <br />
+            <br />
+            <div class="form-gruop">
+                <input type="submit" class="btn btn-primary" value="Thêm cấu hình" />
+                <a asp-action="Index" class="btn btn-success">Trở về </a>
+            </div>
+        </div>
+    </form>

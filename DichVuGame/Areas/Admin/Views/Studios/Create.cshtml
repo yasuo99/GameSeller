@@ -1,0 +1,58 @@
+﻿@model DichVuGame.Models.Studio
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/AdminHome/_CMSLayout.cshtml";
+}
+
+<br />
+<div class="p-4 border rounded" style="background-color:#435d7d">
+    <h2 class="text-white" style="font-family:Bahnschrift;color:azure">Thêm nhà phát hành cho  game</h2>
+</div>
+<br />
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+    <div class="p-4 border rounded">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="col-2">
+            <label asp-for="Studioname" class="control-label"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="Studioname" class="form-control" />
+        </div>
+        <span asp-validation-for="Studioname" class="text-danger"></span>
+        <br />
+        <div class="col-2">
+            <label asp-for="StudioLogo" class="control-label"></label>
+        </div>
+        <div class="col-5">
+            <input type="file" name="files" />
+        </div>
+        <br />
+
+        <div class="col-2">
+            <label asp-for="Describe" class="control-label"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="Describe" class="form-control" />
+        </div>
+        <span asp-validation-for="Describe" class="text-danger"></span>
+        <br />
+
+        <div class="col-2">
+            <label asp-for="CountryID" class="control-label"></label>
+        </div>
+        <div class="col-5">
+            <select asp-for="CountryID" class="form-control" asp-items="ViewBag.CountryID"></select>
+        </div>
+
+        <br />
+
+
+        <br />
+        <div class="form-gruop">
+            <input type="submit" class="btn btn-primary" value="Thêm nhà phát hành" />
+            <a asp-action="Index" class="btn btn-success">Trở về </a>
+        </div>
+    </div>
+</form>

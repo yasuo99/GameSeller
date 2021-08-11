@@ -1,0 +1,67 @@
+﻿@model List<DichVuGame.Models.Game>
+
+@{
+    ViewData["Title"] = "ManageGame";
+    Layout = "~/Areas/Admin/Views/AdminHome/_CMSLayout.cshtml";
+}
+<br />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().GamePoster)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Gamename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Release)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Studio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@item.GamePoster" width="150" height="150" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gamename)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Release)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Studio.Studioname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <div class="btn-group">
+                        @if (item.IsPublish)
+                        {
+                            <a type="button" class="btn btn-primary" asp-action="DePublish" asp-controller="Games" asp-route-id="@item.ID"><i class="fas fa-download"></i></a>
+                        }
+                        else
+                        {
+                            <a type="button" class="btn btn-primary" asp-action="Publish" asp-controller="Games" asp-route-id="@item.ID"><i class="fas fa-upload"></i></a>
+
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,90 @@
+﻿@model DichVuGame.Models.Game
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/AdminHome/_CMSLayout.cshtml";
+}
+
+
+<br />
+<div class="p-4 border rounded row" style="background-color:#435d7d">
+    <h2 class="text-white" style="font-family:Bahnschrift;color:azure">Chỉnh sửa game </h2>
+</div>
+<br />
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div class="p-4 border rounded row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="ID" />
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Gamename" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Gamename" class="form-control" />
+                </div>
+                <span asp-validation-for="Gamename" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="GameDescription" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <textarea asp-for="GameDescription" class="form-control"></textarea>
+                </div>
+                <span asp-validation-for="GameDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="GamePoster" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <input type="file" name="files" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Release" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Release" class="form-control" />
+                </div>
+                <span asp-validation-for="Release" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="StudioID" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="StudioID" class="form-control" asp-items="ViewBag.StudioID"></select>
+                </div>
+                <span asp-validation-for="StudioID" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Price" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Price" class="form-control" />
+                </div>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="col-1">
+
+        </div>
+        <div class="col-3">
+            <img src="@Model.GamePoster" style="border-radius:5px; border:1px solid #bbb9b9; width:80%" />
+        </div>
+
+
+        <br />
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Sửa" />
+            <a asp-action="Index" class="btn btn-success">Trở về danh sách</a>
+        </div>
+    </div>
+</form>
+

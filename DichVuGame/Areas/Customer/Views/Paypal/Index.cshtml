@@ -1,0 +1,82 @@
+﻿
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Slide Login Form template Responsive, Login form web template, Flat Pricing tables, Flat Drop downs Sign up Web Templates, Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+    <!-- Custom Theme files -->
+    <link href="\login_lt\css\style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="\login_lt\css\font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //Custom Theme files -->
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
+    <!-- //web font -->
+
+</head>
+<body style="background-image:none">
+
+    <!-- main -->
+    <div class="w3layouts-main">
+        <div class="bg-layer">
+            <h1 style="font-family:Bahnschrift">NẠP BCOIN</h1>
+            <div class="header-main" style="padding-top:5px;">
+                <div class="main-icon">
+                    <img src="\images\Paypal.png" />
+                </div>
+                <div class="header-left-bottom">
+                    <form method="post" asp-action="TopupWithPaypal" asp-controller="Paypal">
+                        <div style="margin-right:5px;color:white;margin-bottom:2px;font-size:20px">Số tiền</div>
+                        <div class="icon1" style="margin-bottom:5px">
+                            @*<span asp-validation-for="Input.Email" class="fa fa-user" ></span>*@
+
+                            <input type="text" name="topupAmount" placeholder="Tối thiểu 22.000 VNĐ" min="22000" max="9999999999999" value="22000" class="form-control" />
+                        </div>
+                       <i style="margin-right:5px;color:white;margin-bottom:13px">Tối thiểu 22.000 VNĐ</i>
+                        <div class="bottom">
+
+                            <button type="submit" class="btn">Nạp Bcoin qua Paypal</button>
+                        </div>
+                        <img src="\images\visa-mastercard-amex.png" />
+                        
+                    </form>
+                </div>
+                @*<div class="social">
+                        <ul>
+                            <li>or login using : </li>
+                            <li><a asp-page="./" asp-route-returnUrl="@Model.ReturnUrl"><span class="fa fa-chevron-left" aria-hidden="true"></span></a></li>
+                            <li><a href="#" class="twitter"><span class="fa fa-twitter"></span></a></li>
+                            <li><a href="#" class="google"><span class="fa fa-google-plus"></span></a></li>
+                        </ul>
+                    </div>*@
+            </div>
+
+
+        </div>
+    </div>
+    <!-- //main -->
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+﻿@page
+@model RegisterModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Register";
+}
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Slide Login Form template Responsive, Login form web template, Flat Pricing tables, Flat Drop downs Sign up Web Templates, Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+        $(document).ready(function () {
+            $('input.chk').on('change', function () {
+                $('input.chk').not(this).prop('checked', false);
+            });
+        })
+    </script>
+
+    <!-- Custom Theme files -->
+    <link href="\login_lt\css\style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="\login_lt\css\font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //Custom Theme files -->
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
+    <!-- //web font -->
+
+</head>
+<body>
+
+    <!-- main -->
+    <div class="w3layouts-main">
+        <div class="bg-layer">
+            <h1 style="font-family:Bahnschrift">ĐĂNG KÝ</h1>
+            <div class="header-main">
+                <div class="main-icon">
+
+                    <span class="fa fa-address-card"></span>
+                </div>
+                <div class="header-left-bottom">
+                    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        <div style="color:red;text-align:center">
+                            @Html.ValidationMessage("SameEmail")
+                        </div>
+                        <div style="color:red;text-align:center">
+                            @Html.ValidationMessage("SameUsername")
+                        </div>
+                        <div class="icon1">
+
+                            <input asp-for="Input.Username" type="text" placeholder="Tài khoản" class="form-control" />
+                            <span asp-validation-for="Input.Username"></span>
+
+                        </div>
+                        <div class="icon1">
+                            <input asp-for="Input.Email" type="email" placeholder="Địa chỉ Email" class="form-control" />
+                            <span asp-validation-for="Input.Email"></span>
+                        </div>
+                        <div class="icon1">
+                            <input asp-for="Input.Password" placeholder="Mật khẩu" class="form-control" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="icon1">
+                            <input asp-for="Input.ConfirmPassword" placeholder="Xác nhận mật khẩu" class="form-control" />
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+
+                        </div>
+                        <div class="icon1">
+                            <input asp-for="Input.Fullname" type="text" placeholder="Họ và tên" class="form-control" />
+                            <span asp-validation-for="Input.Fullname" class="text-danger"></span>
+
+                        </div>
+                        <div class="icon1">
+                            <input asp-for="Input.Phone" type="text" placeholder="Số điện thoại" class="form-control" />
+                            <span asp-validation-for="Input.Phone" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="col-4" style="color:white;font-family:Bahnschrift;text-align:center">
+                            <label>NAM</label>
+                            <span style="margin-right:20px">
+                                <input asp-for="Input.Sex" type="radio" value="Nam" checked="checked" class="form-control" />
+                            </span>
+
+
+                            <label>NỮ</label>
+                            <span><input asp-for="Input.Sex" type="radio" value="Nữ" class="form-control" /></span>
+
+                        </div>
+                        <br />
+                        <div class="icon1">
+                            <input asp-for="Input.Address" type="text" placeholder="Địa chỉ" class="form-control" />
+                            <span asp-validation-for="Input.Address" class="text-danger"></span>
+                        </div>
+
+                        @if (User.IsInRole(DichVuGame.Utility.Helper.ADMIN_ROLE))
+                        {
+                            <div class="col-4" style="color:white;font-family:Bahnschrift;text-align:center">
+                                <div class="col-3">
+                                    <label asp-for="@Model.Input.IsManager"></label>
+                                </div>
+                                <div class="col-5">
+                                    <input class="chk" asp-for="Input.IsManager" type="checkbox">
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label asp-for="@Model.Input.IsCustomerCare"></label>
+                                    </div>
+                                    <div class="col-5">
+                                        <input class="chk" asp-for="Input.IsCustomerCare" type="checkbox">
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                        <div class="bottom">
+
+                            <button type="submit" class="btn" style="font-family:Bahnschrift">ĐĂNG KÝ</button>
+                            <div>
+                                @if (User.IsInRole(DichVuGame.Utility.Helper.ADMIN_ROLE))
+                                {
+                                    <a style="float:left;color:white;font-family:Bahnschrift" asp-area="Admin" asp-controller="ApplicationUser" asp-action="Index">&lt;Quay lại</a>
+                                }
+                                else
+                                {
+                                    <a style="float:left;color:white;font-family:Bahnschrift" asp-area="Customer" asp-controller="Home" asp-action="Index">&lt;Trang chủ</a>
+                                    <a style="float:right;color:white;font-family:Bahnschrift" asp-area="Identity" asp-page="/Account/Login">Đăng nhập&gt;</a>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- //main -->
+</body>
+
+</html>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

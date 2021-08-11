@@ -1,0 +1,346 @@
+﻿@model DichVuGame.Models.ViewModels.GamesViewModel
+@{ ViewData["Title"] = "Chi tiết sản phẩm"; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script type="application/x-javascript">        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //tags -->
+    <link href="\product_detail\css\bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="\product_detail\css\flexslider.css" type="text/css" media="screen" />
+    <link href="\product_detail\css\font-awesome.css" rel="stylesheet">
+    <link href="\product_detail\css\easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
+    <link href="\product_detail\css\style.css" rel="stylesheet" type="text/css" media="all" />
+
+    <!-- //for bootstrap working -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <h1 style="text-align:center;color:grey;margin-top:40px;font-family:Bahnschrift;font-size:30px">THÔNG TIN GAME</h1>
+    <div class="banner-bootom-w3-agileits">
+        <div class="container">
+            <div class="col-md-6 single-right-left ">
+                <ul class="slides">
+                    <li data-thumb="images/d2.jpg">
+                        <div class="thumb-image"> <img src="@Model.Game.GamePoster" data-imagezoom="true" class="img-responsive"> </div>
+                    </li>
+
+                </ul>
+
+            </div>
+            <div class="col-md-6 single-right-left simpleCart_shelfItem">
+                <h3 style="font-size:30px; color:grey;">@Model.Game.Gamename</h3>
+                <p><span class="item_price">Nhà phát hành: @Model.Game.Studio.Studioname</span></p>
+
+                <p class="item_price">Giá : <span id="price">@Model.Game.Price </span><span>Bcoin</span></p>
+
+
+
+                <form asp-action="DetailsPOST" asp-controller="Home" method="post">
+                    <fieldset>
+
+
+                        @if (Model.Game.AvailableCode > 0)
+                        {
+
+
+            <p>
+                <span class="item_price">Số lượng</span> <input id="itemamount" type="number" min="1" max="@Model.Game.AvailableCode" value="1" asp-for="@Model.Amount" onchange="CalculateSummary()" style="width:10%;text-align:center" />
+
+            </p>
+                            <br />
+                            <p id="summary">Thành tiền: @Model.Game.Price</p>
+
+                                            <div class="col-md-8">
+
+                                                <button type="submit" asp-route-id="@Model.Game.ID" asp-route-type="Code" class="btn btn-primary btn-lg" style="width:100%;background-color:black">Thêm vào giỏ </button>
+
+                                            </div> } @*@if (Model.Game.AvailableAccount > 0)
+                                            {
+                                                          <input name="time"  type="number" min="1" max="@Model.Game.AvailableAccount" value="1" asp-for="@Model.Amount"/>
+                                                        <button type="submit" asp-route-id="@Model.Game.ID" asp-route-type="Account" class="btn btn-primary">Thuê tài khoản </button>}*@
+                        @if (Model.Game.AvailableCode == 0)
+                        {
+            <div class="text-info">Sản phẩm hiện đang hết hàng</div>}
+                    </fieldset>
+                </form>
+                <ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
+                    <li class="share">Share On : </li>
+                    <li>
+                        <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=@Model.ShareUrl/#Register&p[images]=&p[title]=&p[summary]=" class="facebook">
+                            <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                            <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="twitter">
+                            <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                            <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="instagram">
+                            <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                            <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="pinterest">
+                            <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                            <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="clearfix"> </div>
+
+            <!-- /new_arrivals -->
+            <div class="responsive_tabs_agileits">
+                <div id="horizontalTab">
+
+                    <div class="resp-tabs-container">
+                        <!--/tab_one-->
+                        <div class="tab1">
+
+                            <div class="single_page_agile_its_w3ls">
+                                <h6>Mô tả sản phẩm</h6>
+                                <p>
+                                    @Model.Game.GameDescription
+                                </p>
+                            </div>
+                        </div>
+                        <!--//tab_one-->
+                        <div class="tab2">
+
+
+
+
+                            @if (ViewBag.RequireLogin != "")
+                            {
+                <div class="text-danger">
+                    @ViewBag.RequireLogin
+
+                </div>}
+
+                            <div class="single_page_agile_its_w3ls" style="text-align:center">
+                                <h6>Gửi câu hỏi và ý kiến của bạn về sản phẩm</h6>
+                                <div class="bootstrap-tab-text-grids">
+                                    <div class="bootstrap-tab-text-grid">
+
+
+                                        <div class="add-review">
+                                            <h4>Thêm bình luận </h4>
+                                            <form id="commentForm" asp-action="AddComment" asp-controller="Comments" method="post" asp-route-id="@Model.Game.ID">
+                                                <input hidden asp-for="ApplicationUser.Id" />
+                                                <input hidden asp-for="Game.ID" />
+                                                <textarea name="comment" required=""></textarea>
+                                                <input type="submit" value="Bình luận">
+                                            </form>
+                                        </div>
+
+                                        <div class="clearfix"> </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="tab3">
+                            <div class="single_page_agile_its_w3ls">
+                                <h6>Bình luận của mọi người</h6>
+                                <div class="bootstrap-tab-text-grids">
+                                    <div class="bootstrap-tab-text-grid">
+
+
+                                        @if (Model.Comments.Count > 0)
+                                        {
+                            @foreach (var comment in Model.Comments)
+                            {
+
+            <p><i class="fa fa-user-circle" aria-hidden="true"> </i><b> @comment.ApplicationUser.User</b></p>
+                                <p>@comment.UserComment</p>} }
+                        else
+                        {
+            <p>Chưa có bình luận</p>}
+
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="single_page_agile_its_w3ls">
+                                <h6>Nhận xét của sản phẩm</h6>
+                                <div class="bootstrap-tab-text-grids">
+                                    <div class="bootstrap-tab-text-grid">
+
+                                        @if (Model.WasBought)
+                                        {
+
+
+
+                            <div class="single_page_agile_its_w3ls" style="text-align:center">
+                                <h6>Gửi nhận xét của bạn về sản phẩm</h6>
+                                <div class="bootstrap-tab-text-grids">
+                                    <div class="bootstrap-tab-text-grid">
+
+
+                                        <div class="add-review">
+                                            <h4>Thêm nhận xét </h4>
+                                            <form asp-action="Create" asp-controller="Reviews" method="post">
+                                                <input hidden asp-for="ApplicationUser.Id" />
+                                                <input hidden asp-for="Game.ID" />
+                                                <textarea name="review" required=""></textarea>
+                                                <input type="submit" value="Nhận xét">
+                                            </form>
+                                        </div>
+
+                                        <div class="clearfix"> </div>
+                                    </div>
+                                </div>
+
+                            </div>}
+                                        @if (Model.Reviews.Count > 0)
+                                        {
+                                            foreach (var review in Model.Reviews)
+                                            {
+                            <div class="col-2">
+                                <i class="fas fa-user"></i><br />
+                                @review.ApplicationUser.User
+                            </div>
+                                                <div class="col-8">
+                                                    @for (int i = 0; i < review.Star; i++)
+                                                    {
+                                <i class="fas fa-star" style="color:gold"></i>}
+                                                    @for (int i = review.Star; i < 5; i++)
+                                                    {
+                                <i class="far fa-star" style="color:gold"></i>}
+                                                    <br />
+                                                    <p>@review.Review</p>
+                                                </div> }
+                                        }
+                                        else
+                                        {
+
+                            <p>Sản phẩm chưa có đánh giá</p>}
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //new_arrivals -->
+            <!--/slider_owl-->
+
+
+
+        </div>
+        <div class="clearfix"> </div>
+        <!--//slider_owl-->
+    </div>
+
+
+
+
+
+    <!-- js -->
+    <script type="text/javascript" src="\product_detail\js\jquery-2.1.4.min.js"></script>
+    <!-- //js -->
+    <script src="\product_detail\js\modernizr.custom.js"></script>
+    <!-- Custom-JavaScript-File-Links -->
+    <!-- cart-js -->
+    <script src="\product_detail\js\minicart.min.js"></script>
+    <script>
+        // Mini Cart
+        paypal.minicart.render({
+            action: '#'
+        });
+
+        if (~window.location.search.indexOf('reset=true')) {
+            paypal.minicart.reset();
+        }
+    </script>
+
+    <!-- //cart-js -->
+    <!-- single -->
+    <script src="\product_detail\js\imagezoom.js"></script>
+    <!-- single -->
+    <!-- script for responsive tabs -->
+    <script src="\product_detail\js\easy-responsive-tabs.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#horizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true,   // 100% fit in a container
+                closed: 'accordion', // Start closed if in accordion view
+                activate: function (event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#tabInfo');
+                    var $name = $('span', $info);
+                    $name.text($tab.text());
+                    $info.show();
+                }
+            });
+            $('#verticalTab').easyResponsiveTabs({
+                type: 'vertical',
+                width: 'auto',
+                fit: true
+            });
+        });
+    </script>
+    <!-- FlexSlider -->
+    <script src="\product_detail\js\jquery.flexslider.js"></script>
+    <script>
+        // Can also be used with $(document).ready()
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
+        });
+    </script>
+    <!-- //FlexSlider-->
+    <!-- //script for responsive tabs -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="\product_detail\js\move-top.js"></script>
+    <script type="text/javascript" src="\product_detail\js\jquery.easing.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+                };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src="\product_detail\js\bootstrap.js"></script>
+    <script>
+        function CalculateSummary() {
+            var price = document.getElementById("price").innerHTML;
+            var amount = document.getElementById("itemamount").value;
+            document.getElementById("summary").innerHTML = "Thành tiền: " + price * amount;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@model DichVuGame.Models.Code
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/AdminHome/_CMSLayout.cshtml";
+}
+
+
+<br />
+<div class="p-4 border rounded" style="background-color:#435d7d">
+    <h2 class="text-white" style="font-family:Bahnschrift;color:azure">Chỉnh sửa mã code </h2>
+</div>
+<br />
+<form method="post" asp-action="Edit">
+    <div class="p-4 border rounded">
+        <input type="hidden" asp-for="ID" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="col-2">
+            <label asp-for="GameID" class="control-label"></label>
+        </div>
+        <div class="col-5">
+            <select asp-for="GameID" class="form-control" asp-items="ViewBag.GameID"></select>
+        </div>
+        <span asp-validation-for="GameID" class="text-danger"></span>
+
+        <br />
+
+
+        <div class="col-2">
+            <label asp-for="Gamecode" class="control-label"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="Gamecode" class="form-control" />
+        </div>
+        <span asp-validation-for="Gamecode" class="text-danger"></span>
+
+        <br />
+
+
+        <div class="col-5">
+            <input style="margin-left:185px" class="form-check-input" asp-for="Available" />
+        </div>
+        <div class="col-2">
+            <label class="form-check-label">Sẵn có</label>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <input type="submit" value="Lưu" class="btn btn-primary" />
+            <a asp-controller="Codes" asp-action="Index" class="btn btn-success">Trở về </a>
+        </div>
+    </div>
+</form>
+

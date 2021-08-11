@@ -1,0 +1,34 @@
+﻿@model IEnumerable<DichVuGame.Models.TopupHistory>
+
+@{
+    ViewData["Title"] = "Lịch sử nạp tiền";
+}
+
+<br />
+<br />
+<h5 style="text-align: center;font-family: Bahnschrift;">Lịch sử nạp tiền</h5>
+<table class="table" style="font-family: Bahnschrift;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TopupDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TopupAmount)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TopupDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TopupAmount)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

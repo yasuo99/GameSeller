@@ -1,0 +1,61 @@
+﻿@model DichVuGame.Models.ViewModels.SuperCartViewModel
+@{
+    ViewData["Title"] = "Thanh toán thành công";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                        @if (Model.CartVM1.Count > 0)
+                        {
+                            <tr>
+                                <td></td>
+                                <td>   </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            @foreach (var product in Model.CartVM1)
+                            {
+                                var count = 0;
+                                <tr>
+                                    <td class="col-sm-8 col-md-6">
+                                        <div class="media">
+                                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="@product.Game.GamePoster" style="width: 150px; height: 150px;"> </a>
+                                            <div class="media-body">
+                                                <h4 class="media-heading"><a asp-area="Customer" asp-controller="Home" asp-action="Details" asp-route-id="@product.Game.ID"> @product.Game.Gamename</a></h4>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                     <td>
+                                     </td>
+                                    <td>@foreach (var code in Model.Codes) {
+                                        if(code.GameID == product.Game.ID)
+                                        {
+                                             count++;
+                                            <label style="font-family: Bahnschrift;">Mã game @count:  @code.Gamecode</label>
+                                        }
+                                    }
+                                        </td>
+                                </tr>
+                            }
+                        }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model List<DichVuGame.Models.Code>
+
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+}
+
+<br />
+<br />
+<h5 style="text-align: center;font-family: Bahnschrift;">Chi tiết đơn hàng</h5>
+<table class="table" style="font-family: Bahnschrift;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Game.Gamename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Gamecode)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Game.Gamename)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gamecode)
+                </td>
+            </tr>
+        }
+</table>
+<div>
+    <a asp-action="Index">Quay lại</a>
+</div>

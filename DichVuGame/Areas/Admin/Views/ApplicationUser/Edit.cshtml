@@ -1,0 +1,61 @@
+﻿@model DichVuGame.Models.ApplicationUser
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/AdminHome/_CMSLayout.cshtml";
+}
+
+<br />
+<br />
+<h4 class="text-info">Thay đổi thông tin tài khoản</h4>
+
+<form method="post" asp-action="Edit">
+    <div class="p-4 border rounded">
+        <input type="hidden" asp-for="Id" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="User"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="User" class="form-control" />
+            </div>
+            <span asp-validation-for="User" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Fullname"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Fullname" readonly class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="PhoneNumber"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="PhoneNumber" class="form-control" />
+            </div>
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Address"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Address" class="form-control" />
+            </div>
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" asp-route-id="@Model.Id" value="Cập nhật" />
+        </div>
+    </div>
+
+</form>
+<div>
+    <a asp-action="Index" class="btn btn-success">Quay lại</a>
+</div>
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

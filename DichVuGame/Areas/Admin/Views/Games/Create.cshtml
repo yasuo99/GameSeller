@@ -1,0 +1,85 @@
+﻿@model DichVuGame.Models.ViewModels.GamesViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/AdminHome/_CMSLayout.cshtml";
+}
+
+<br />
+<div class="p-4 border rounded" style="background-color:#435d7d">
+    <h2 class="text-white" style="font-family:Bahnschrift;color:azure">Tạo game mới </h2>
+</div>
+<br />
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="p-4 border rounded">
+        <div class="text-danger">@Html.ValidationMessage("SameGame")</div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Game.Gamename" class="control-label"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Game.Gamename" class="form-control" />
+                <span asp-validation-for="Game.Gamename" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label class="control-label" asp-for="Game.GamePoster"></label>
+            </div>
+            <div class="col-6">
+                <input type="file" name="files" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Game.GameDescription" class="control-label"></label>
+            </div>
+            <div class="col-6">
+                <textarea asp-for="Game.GameDescription" class="form-control" /></textarea>
+                <span asp-validation-for="Game.GameDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Game.Release" class="control-label"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Game.Release" class="form-control" />
+                <span asp-validation-for="Game.Release" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Game.StudioID" class="control-label"></label>
+            </div>
+            <div class="col-6">
+                <select asp-for="Game.StudioID" class="form-control" asp-items="ViewBag.StudioID"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Game.Price" class="control-label"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Game.Price" class="form-control" />
+                <span asp-validation-for="Game.Price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label class="control-label">Thẻ tag</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Game.GameTags" class="form-control" placeholder="Nhập cách nhau dấu ," />
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Lưu" />
+            <a asp-action="Index" class="btn btn-success">Trở về</a>
+        </div>
+    </div>
+</form>
+<script>
+
+</script>

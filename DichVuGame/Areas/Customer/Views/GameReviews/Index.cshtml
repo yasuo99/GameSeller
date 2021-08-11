@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DichVuGame.Models.GameReview>
+
+@{
+    ViewData["Title"] = "Nhận xét của bạn";
+}
+
+<br />
+<br />
+<h5 style="text-align: center;font-family: Bahnschrift;">Nhận xét của bạn</h5>
+<table class="table" style="font-family: Bahnschrift;">
+    <thead>
+        <tr>
+            <th> @Html.DisplayNameFor(model => model.FirstOrDefault().Game.GamePoster)</th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Review)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Star)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@item.Game.GamePoster" width="150" height="150" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Review)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Star)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
